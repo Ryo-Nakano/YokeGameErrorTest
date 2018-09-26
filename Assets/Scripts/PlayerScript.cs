@@ -4,21 +4,20 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour {
-	float speed = 10f;
+	
+	float speed = 10f;//Playerの移動スピード
 
-	// Use this for initialization
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		Move ();//Playerを移動させる関数
 	}
 		
-
-	void onTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Enemy") {
+    //当たり判定
+	void onCollisionEnter(Collision col){
+		if (col.gameObject.tag == "Enemy") {
 			SceneManager.LoadScene ("GameOverScene")
 		}
 	
